@@ -13,6 +13,7 @@ Our code builds upon [AnimateDiff](https://github.com/guoyww/AnimateDiff), and w
 
 
 ## 🔥 News
+- **[2024/08/26]** We Create an interface with Gradio.
 - **[2024/08/19]** We initialized this github repository and released the inference code and 61-frame model.
 - **[2024/08/15]** We released the paper of [FancyVideo](https://arxiv.org/abs/2408.08189).
 
@@ -62,12 +63,17 @@ After download models, your resources folder is like:
 ```
 
 ### 3. Customize your own videos
-#### 3.1 Image to Video
+#### 3.1 Use the Interface
+Run the file app.py and go to Link : 127.0.0.1:7860
+```
+python app.py
+```
+#### 3.2 Image to Video Manual command line
 Due to the limited image generation capabilities of the SD1.5 model, we recommend generating the initial frame using a more advanced T2I model, such as SDXL, and then using our model's I2V capabilities to create the video.
 ```
 CUDA_VISIBLE_DEVICES=0 PYTHONPATH=./ python scripts/demo.py --config configs/inference/i2v.yaml
 ```
-#### 3.2 Text to Video with different base models
+#### 3.3 Text to Video with different base models Manual command line
 Our model features universal T2V capabilities and can be customized with the SD1.5 community base model.
 ```
 # use the base model of pixars
