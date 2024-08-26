@@ -56,6 +56,9 @@ def run_inference(infer_mode, settings, image=None, text_prompt=None, common_neg
 
     if base_model_file:
         base_model_path = os.path.join("resources/models/sd_v1-5_base_models", base_model_file)
+    else:
+        base_model_path = "resources/models/sd_v1-5_base_models/realisticVisionV60B1_v51VAE.safetensors"  
+
 
     lora_path, lora_weight = parse_lora(text_prompt)
     if lora_path:
@@ -223,7 +226,8 @@ with gr.Blocks() as demo:
                 base_model_dropdown = gr.Dropdown(
                     label="Select Base Model", 
                     choices=base_model_files, 
-                    value=i2v_settings.get("base_model_file", "")
+                    value=i2v_settings.get("base_model_file", "realisticVisionV60B1_v51VAE.safetensors"),
+                    allow_custom_value=True
                 )
                 image_input = gr.Image(label="Upload an Image", type="pil")
                 text_input_image = gr.Textbox(
@@ -304,7 +308,8 @@ with gr.Blocks() as demo:
                 base_model_dropdown_text = gr.Dropdown(
                     label="Select Base Model", 
                     choices=base_model_files, 
-                    value=t2v_settings.get("base_model_file", "")
+                    value=t2v_settings.get("base_model_file", "realisticVisionV60B1_v51VAE.safetensors"),
+                    allow_custom_value=True
                 )
                 text_input = gr.Textbox(
                     label="Enter a Text Prompt", 
